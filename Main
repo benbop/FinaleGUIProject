@@ -94,18 +94,19 @@ public class Main extends MouseAdapter {
                     if(Storage.checker(uname.getText(),upass.getText())){
                         JOptionPane.showMessageDialog(null,"successfully logged in!");
                         Slotmachine.main();
+                        Slotmachine.credits.setText(Storage.parts(2));
                     }else if(!(Storage.checker(uname.getText(),upass.getText()))){
                         JOptionPane.showMessageDialog(null,"This user isn't registerd");
-                    }else if(!Slotmachine.credits.getText().equals(Storage.parts(3))){
+                    }else if(!Slotmachine.credits.getText().equals(Storage.parts(2))){
                         try {
                             FileWriter writer = new FileWriter("users.txt");
-                            writer.write(Storage.parts(3));
+                            writer.write(Storage.parts(2));
                         } catch (IOException ex) {
                             throw new RuntimeException(ex);
                         }
 
                     }
-                    if (!Slotmachine.credits.getText().equals(Storage.parts(2))) {
+                    if (!Slotmachine.credits.getText().equals(Storage.parts(2)) && Storage.checker(uname.getText(),upass.getText()) == true) {
                         Storage.updateCredits(Slotmachine.credits.getText());
                         try {
                             FileWriter writer = new FileWriter("users.txt");
