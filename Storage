@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.Arrays;
 import java.util.Map;
+import java.util.Objects;
 
 public class Storage {
 
@@ -46,7 +47,7 @@ public class Storage {
     }
 
     static public String parts(int part) {
-        String[] partss = new String[0];
+        String[] partss;
         try {
             File file = new File("users.txt");
             FileReader reader = new FileReader(file);
@@ -55,13 +56,21 @@ public class Storage {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 partss = line.split(":");
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+                if(Main.uname.getText().equals(partss[0])){
+                    return partss[2];
+                }
 
-        return partss[part];
-    }
+                }
+            } catch(IOException e){
+                throw new RuntimeException(e);
+            }
+
+
+        return null;}
+
+
+
+
     public static void updateCredits(String creditsValue) {
         Slotmachine.credits.setText(String.valueOf(creditsValue));
     }
