@@ -7,7 +7,7 @@ import java.awt.event.MouseListener;
 import java.io.*;
 
 public class Slotmachine extends MouseAdapter{
-public static JLabel credits = new JLabel(Storage.parts(2));
+public static JLabel credits = new JLabel(String.valueOf(100));
         public static void main() {
             JPanel panel = new JPanel(null);
 
@@ -62,7 +62,7 @@ public static JLabel credits = new JLabel(Storage.parts(2));
 
 
 
-            frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+            frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
             JButton Spin = new JButton("Play");
             Spin.setSize(180,90);
             Spin.setLocation(300,50);
@@ -114,7 +114,7 @@ public static JLabel credits = new JLabel(Storage.parts(2));
 
                         // update the credits value in the file
                         String creditsValue = credits.getText();
-                        if (!Slotmachine.credits.getText().equals(Storage.parts(1))) {
+                        if (!Slotmachine.credits.getText().equals(Storage.parts(2))) {
                             try {
                                 File file = new File("users.txt");
                                 FileReader reader = new FileReader(file);
